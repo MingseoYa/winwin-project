@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.label_text {
+  color: var(--gray-800);
+}
+
+.star {
+  color: var(--red);
+}
+
+.normal {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid var(--gray-200);
+  font-weight: 500;
+  font-size: 0.875rem;
+
+  &::placeholder {
+    color: var(--gray-400);
+  }
+  &:focus {
+    border: 0.0625rem solid var(--gray-600);
+  }
+}
+
+.error {
+  background-color: var(--gray-W);
+  color: var(--gray-B);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  color: var(--red);
+  font-size: 0.875rem;
+  border: 0.063rem solid red;
+}
