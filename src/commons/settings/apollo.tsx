@@ -19,9 +19,7 @@ const GLOBAL_CACHE = new InMemoryCache();
 interface IApolloUploadSetting {
   children: React.ReactNode;
 }
-export default function ApolloHeaderAndErrorSettingRefresh(
-  props: IApolloUploadSetting
-) {
+export default function ApolloSetting(props: IApolloUploadSetting) {
   const { accessToken, setAccessToken } = useAccessTokenStore();
   const { setIsLoaded } = useLoadStore();
 

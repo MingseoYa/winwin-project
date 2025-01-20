@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "@/commons/styles/reset.css";
+import ApolloSetting from "@/commons/settings/apollo";
 
 const pretendard = localFont({
   src: "../../public/fonts/PretendardVariable.woff2",
@@ -10,7 +11,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "포커스온",
+  title: "winwin",
   description: "프리랜서와 클라이언트를 연결하는 최적의 외주 플랫폼",
 };
 
@@ -24,8 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pretendard.variable} antialiased`}>
-        {children}
-        {modal}
+        <ApolloSetting>
+          {children}
+          {modal}
+        </ApolloSetting>
       </body>
     </html>
   );
