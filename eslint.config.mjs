@@ -16,5 +16,10 @@ export default [
       "@typescript-eslint/no-explicit-any": "off", // any 타입 사용 허용
       "react/react-in-jsx-scope": "off", // React 17+에서는 불필요한 규칙
     },
+    settings: {
+      react: {
+        version: "detect", // React 버전을 자동으로 감지
+      },
+    },
   },
 ];
