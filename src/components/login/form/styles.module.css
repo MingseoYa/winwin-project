@@ -46,6 +46,10 @@
 .signup_button {
   font-size: 0.875rem;
   color: var(--gray-700);
+}
+
+.signup_button:hover {
+  color: var(--main);
   text-decoration: underline;
   text-underline-offset: 0.25rem;
 }

@@ -13,3 +13,11 @@
   --red: #f66a6a;
   --main: #4f80ff;
 }
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
