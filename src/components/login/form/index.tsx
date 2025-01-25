@@ -7,7 +7,7 @@ import { InputNormal, InputPassword } from "@/commons/components/input";
 import { useInitialize } from "./form.initialize";
 import { ButtonPrimaryMFull } from "@/commons/components/button";
 
-export default function Login(): JSX.Element {
+export default function Login() {
   return (
     <div className={styles.main_box}>
       <Image

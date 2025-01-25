@@ -1,7 +1,7 @@
 import Login from "@/components/login/form";
 import LoginModal from "@/components/login/modal";
-import { JSX } from "react";
-export default function LoginPage(): JSX.Element {
+
+export default function LoginPage() {
   return (
     <LoginModal>
       <Login />

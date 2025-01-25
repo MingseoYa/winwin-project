@@ -25,7 +25,6 @@ export default function Form<T extends FieldValues>({
   defaultValue,
   useInitialize,
 }: IForm<T>) {
-  console.log("schema:::", schema);
   const method = useForm<T>({
     resolver: zodResolver(schema),
     mode: "all",

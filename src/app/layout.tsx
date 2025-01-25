@@ -17,17 +17,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  modal,
+  auth,
 }: Readonly<{
   children: React.ReactNode;
-  modal: React.ReactNode;
+  auth: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={`${pretendard.variable} antialiased`}>
         <ApolloSetting>
           {children}
-          {modal}
+          {auth}
         </ApolloSetting>
       </body>
     </html>

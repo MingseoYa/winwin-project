@@ -1,0 +1,8 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 전체 높이 */
+  width: 100vw; /* 화면 전체 너비 */
+  background-color: rgba(0, 0, 0, 0.45);
+}

@@ -12,7 +12,7 @@ export const useInitialize = (method: UseFormReturn<ILoginSchema>) => {
   const [loginUser] = useMutation(LOGIN_USER);
   const { setAccessToken } = useAccessTokenStore();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: ILoginSchema) => {
     const { email, password } = data;
     try {
       // 1. 로그인 뮤테이션 날려서 accessToken 받아오기
