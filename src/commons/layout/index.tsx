@@ -3,7 +3,10 @@ import { usePathname } from "next/navigation";
 import Header from "./header";
 
 const HIDDEN_HEADER = ["/signup"];
-export default function LayoutComponent({ children }) {
+interface ILayoutComponentProps {
+  children: React.ReactNode;
+}
+export default function LayoutComponent({ children }: ILayoutComponentProps) {
   const pathname = usePathname();
 
   const isHiddenHeader = HIDDEN_HEADER.includes(pathname);

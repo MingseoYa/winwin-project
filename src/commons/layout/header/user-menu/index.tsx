@@ -3,8 +3,12 @@ import { LogoutUserDocument } from "@/commons/graphql/graphql";
 import { useAccessTokenStore } from "@/commons/stores/accessToken";
 import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/navigation";
+import { IUserMenuDropdownProps } from "./types";
 
-export default function UserMenuDropdown({ data, toggleUserMenu }) {
+export default function UserMenuDropdown({
+  data,
+  toggleUserMenu,
+}: IUserMenuDropdownProps) {
   const router = useRouter();
   const { setAccessToken } = useAccessTokenStore();
   const client = useApolloClient();
