@@ -2,16 +2,18 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import UserMenuDropdown from "./user-menu";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@apollo/client";
 import { FetchUserLoggedInDocument } from "@/commons/graphql/graphql";
-import { useState } from "react";
-import UserMenuDropdown from "./user-menu";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Header() {
   const router = useRouter();
+  // 유저메뉴 드롭다운
   const [isOpenUserMenu, SetIsOpenUserMenu] = useState(false);
+
   const toggleUserMenu = () => {
     SetIsOpenUserMenu((prev) => !prev);
   };
@@ -73,12 +75,21 @@ export default function Header() {
                 alt="profile"
                 className={styles.profile_image}
               />
-              <ChevronDown
-                size={16}
-                color="#1a1a1a"
-                onClick={toggleUserMenu}
-                style={{ cursor: "pointer" }}
-              />
+              {isOpenUserMenu ? (
+                <ChevronUp
+                  size={16}
+                  color="#1a1a1a"
+                  onClick={toggleUserMenu}
+                  style={{ cursor: "pointer" }}
+                />
+              ) : (
+                <ChevronDown
+                  size={16}
+                  color="#1a1a1a"
+                  onClick={toggleUserMenu}
+                  style={{ cursor: "pointer" }}
+                />
+              )}
             </div>
             {/* 유저메뉴 드롭다운 */}
             {isOpenUserMenu && (
