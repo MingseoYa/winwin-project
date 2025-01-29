@@ -1,0 +1,60 @@
+.user_menu_dropdown {
+  position: absolute;
+  bottom: 0;
+  right: 32px;
+  width: 224px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #0000001a;
+  transform: translateY(103%);
+  background-color: white;
+}
+
+.user_info {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user_name {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.user_point {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--gray-50);
+  border-radius: 2px;
+  padding: 4px;
+}
+
+.point_label {
+  font-weight: 600;
+}
+
+.point {
+  display: flex;
+  gap: 4px;
+}
+
+.amount {
+  font-weight: 600;
+  color: var(--main);
+}
+
+.user_menu_nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 12px;
+  background-color: var(--gray-10);
+}
+
+.logout {
+  width: 100%;
+  padding: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--gray-800);
+}

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "@/commons/styles/reset.css";
 import ApolloSetting from "@/commons/settings/apollo";
+import LayoutComponent from "@/commons/layout";
 
 const pretendard = localFont({
   src: "../../public/fonts/PretendardVariable.woff2",
@@ -26,8 +27,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${pretendard.variable} antialiased`}>
         <ApolloSetting>
-          {children}
-          {auth}
+          <LayoutComponent>
+            {children}
+            {auth}
+          </LayoutComponent>
         </ApolloSetting>
       </body>
     </html>

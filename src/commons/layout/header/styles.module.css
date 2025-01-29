@@ -1,0 +1,77 @@
+.contents {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 75rem;
+  height: 4rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  background-color: white;
+}
+
+.logo {
+  width: 7rem;
+  height: auto;
+}
+
+.left_area {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav {
+  display: flex;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.nav .menu {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.profile {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.profile_image {
+  width: 2rem;
+  height: 2rem;
+}
+
+.right_area {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.sub_nav {
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-900);
+}
+
+.sub_nav .menu {
+  padding: 0 1rem;
+}
+
+.toLogin {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.toSignup {
+  width: 5rem;
+  height: 2.25rem;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  background-color: var(--main);
+  color: white;
+  font-weight: 500;
+}
