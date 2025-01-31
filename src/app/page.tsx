@@ -1,5 +1,11 @@
-import Link from "next/link";
+import MainCarousel from "@/components/main/carousel";
+import MainHeader from "@/components/main/header";
 
-export default function FocusOnPage(): JSX.Element {
-  return <Link href="/login">로그인하기</Link>;
+export default function WinWinPage() {
+  return (
+    <>
+      <MainHeader />
+      <MainCarousel />
+    </>
+  );
 }
