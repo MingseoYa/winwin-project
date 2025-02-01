@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 75rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.card_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.card_wrapper {
+  flex: 1; /* ✅ 균등 배분 */
+  max-width: calc((75rem - (3rem)) / 4); /* ✅ 5개의 카드가 딱 맞도록 설정 */
+}

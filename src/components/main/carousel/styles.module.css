@@ -1,7 +1,8 @@
 .slider_container {
   margin: 0 auto;
-  padding: 2rem 2rem 0 2rem;
+  padding: 0 2rem;
   max-width: 75rem;
+  margin-bottom: 4rem;
 }
 
 .slide {
