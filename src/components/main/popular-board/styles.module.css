@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 75rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.toComunity {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--main);
+}
+
+.title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.card_container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem; /* 카드 간격 */
+}

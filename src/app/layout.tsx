@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "@/commons/styles/reset.css";
+import "@/commons/styles/slick.css";
+import "@/commons/styles/slick-theme.css";
 import ApolloSetting from "@/commons/settings/apollo";
 import LayoutComponent from "@/commons/layout";
 

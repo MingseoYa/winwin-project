@@ -1,0 +1,81 @@
+.card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--gray-10);
+  border: 0.0625rem solid var(--gray-50);
+  border-radius: 8px;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.left_area {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  min-width: 0; /* ✅ 부모 크기를 넘지 않도록 설정 */
+}
+
+.writer,
+.title,
+.contents {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.writer {
+  font-size: 0.75rem;
+  color: var(--gray-700);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-900);
+  margin-bottom: 0.25rem;
+}
+
+.contents {
+  font-size: 0.875rem;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+}
+
+.icon_area {
+  display: flex;
+  gap: 1rem;
+}
+
+.like,
+.dislike {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+}
+
+.like_count,
+.dislike_count {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+}
+
+.right_area {
+  display: flex;
+  flex-shrink: 0; /* ✅ 이미지 크기가 줄어들지 않도록 고정 */
+  align-items: center;
+  width: 5rem;
+}
+
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
