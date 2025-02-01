@@ -14,7 +14,7 @@
   font-weight: 500;
 }
 
-.toMarket {
+.toComunity {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -29,12 +29,8 @@
 
 .card_container {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.card_wrapper {
-  flex: 1; /* ✅ 균등 배분 */
-  max-width: calc((75rem - (3rem)) / 4); /* ✅ 5개의 카드가 딱 맞도록 설정 */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem; /* 카드 간격 */
 }
