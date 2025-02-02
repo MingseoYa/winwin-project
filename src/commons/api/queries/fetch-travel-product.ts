@@ -21,6 +21,7 @@ export const FETCH_TRAVELPRODUCT = gql`
         _id
         name
         picture
+        email
       }
     }
   }
