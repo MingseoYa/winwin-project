@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 75rem;
+  padding-top: 3rem;
+}
+
+.content > section {
+}
+
+.content > aside {
+}
