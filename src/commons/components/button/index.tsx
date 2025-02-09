@@ -26,3 +26,19 @@ export function ButtonPrimaryMFull({ children, ...rest }: IButton) {
     </ButtonBase>
   );
 }
+
+export function ButtonBlackSFit({ children, ...rest }: IButton) {
+  return (
+    <ButtonBase cssprop={styles.button__black__s__fit} {...rest}>
+      {children}
+    </ButtonBase>
+  );
+}
+
+export function ButtonCancelSfit({ children, ...rest }: IButton) {
+  return (
+    <ButtonBase cssprop={styles.button__cancel__s__fit} {...rest}>
+      {children}
+    </ButtonBase>
+  );
+}
