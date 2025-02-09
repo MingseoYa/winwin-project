@@ -1,0 +1,83 @@
+.question_box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2.5rem 0;
+  border-bottom: 0.0625rem solid #e4e4e4;
+}
+
+.question_item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profile_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.6875rem;
+}
+
+.profile_image {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.profile_name {
+  color: var(--gray-700, #5f5f5f);
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+.action_button_container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.delete_button {
+  cursor: pointer;
+}
+
+.date {
+  color: #818181;
+  font-size: 0.875rem;
+}
+
+.bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.answer_button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.answer_button > div {
+  color: var(--gray-800, #333);
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+.gray70 {
+  color: var(--gray-700);
+}
+
+.answer_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+}
+
+.no_answer {
+  text-align: center;
+  color: var(--gray-700);
+  font-size: 0.875rem;
+  padding: 0.625rem 0;
+}

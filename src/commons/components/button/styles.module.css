@@ -7,7 +7,8 @@
   transition: all 0.3s ease;
 }
 
-.common:disabled {
+.button__primary__m__full:disabled,
+.button__black__s__fit:disabled {
   background-color: var(--gray-50);
   color: var(--gray-300);
   cursor: not-allowed;
@@ -18,4 +19,22 @@
   background-color: var(--main);
   color: white;
   border: none;
+}
+
+.button__black__s__fit {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.button__cancel__s__fit {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
 }

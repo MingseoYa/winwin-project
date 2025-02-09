@@ -1,0 +1,10 @@
+.textarea__standard__m__full {
+  width: 100%;
+  min-height: 12.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: none;
+  border: 0.0625rem solid var(--gray-200);
+}

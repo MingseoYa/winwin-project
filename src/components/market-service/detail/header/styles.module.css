@@ -1,0 +1,49 @@
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.title_area {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: var(--gray-900);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+}
+
+.icon_area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon_area > * {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.remarks {
+  color: var(--gray-600);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.tags {
+  color: var(--main);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
