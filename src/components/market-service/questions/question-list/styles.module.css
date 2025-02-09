@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 75rem;
+  padding-top: 3rem;
+}
+.title {
+  color: var(--gray-800);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+}
+
+.no_question {
+  color: #777;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 2.5rem 0;
+}
