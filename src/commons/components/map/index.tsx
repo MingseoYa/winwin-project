@@ -1,15 +1,11 @@
 import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
 import styles from "./styles.module.css";
-import { TravelproductAddress } from "@/commons/graphql/graphql";
-import { KakaoMapProps } from "./types";
+import { KakaoMapCommons, KakaoMapProps } from "./types";
 
 function KakaoMap({ lat, lng, cssprop }: KakaoMapProps) {
   const [_, error] = useKakaoLoader({
     appkey: process.env.NEXT_PUBLIC_KAKAO_MAP_KEY!, // 발급 받은 APPKEY
   });
-  console.log("mapKey: ", process.env.NEXT_PUBLIC_KAKAO_MAP_KEY);
-
-  if (error) return <div>Error</div>;
 
   // 지도 마커 커스텀
   const markerSvg = `
@@ -33,11 +29,12 @@ function KakaoMap({ lat, lng, cssprop }: KakaoMapProps) {
 }
 
 // 마켓 서비스 등록 페이지에서 사용하는 지도
-export function KakaoMapStandardMFull(rest: TravelproductAddress) {
+export function KakaoMapStandardMFull(rest: KakaoMapCommons) {
+  console.log("rest", rest);
   return <KakaoMap cssprop={styles.standard__m__full} {...rest} />;
 }
 
 // 마켓 서비스 디테일 페이지에서 사용하는 지도
-export function KakaoMapStandardSFull(rest: TravelproductAddress) {
+export function KakaoMapStandardSFull(rest: KakaoMapCommons) {
   return <KakaoMap cssprop={styles.standard__s__full} {...rest} />;
 }

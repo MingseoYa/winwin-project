@@ -20,17 +20,24 @@ export default function MarketServiceDetail() {
       variables: { serviceId },
     }
   );
-  // const [mapPosition, setMapPosition] = useState<number | null>(null);
-  // data가 로드된 후 카카오맵 초기화
-  // useEffect(() => {
-  //   if (data?.fetchTravelproduct?.travelproductAddress && !mapPosition) {
-  //     setMapPosition({
-  //       lat: data.fetchTravelproduct.travelproductAddress.lat,
-  //       lng: data.fetchTravelproduct.travelproductAddress.lng,
-  //     });
-  //   }
-  // }, [data, mapPosition]);
-  // console.log("mapPosition: ", mapPosition);
+  const [mapPosition, setMapPosition] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
+  useEffect(() => {
+    if (
+      data?.fetchTravelproduct?.travelproductAddress?.lat &&
+      data?.fetchTravelproduct?.travelproductAddress?.lng &&
+      !mapPosition
+    ) {
+      setMapPosition({
+        lat: data.fetchTravelproduct.travelproductAddress.lat,
+        lng: data.fetchTravelproduct.travelproductAddress.lng,
+      });
+    }
+  }, [data, mapPosition]);
+
+  console.log("mapPosition: ", mapPosition);
   return (
     <main className={styles.container}>
       <MarketServiceDetailHeader
@@ -46,11 +53,10 @@ export default function MarketServiceDetail() {
           <MarketServiceDetailContentDescription
             contents={data?.fetchTravelproduct.contents || ""}
           />
-          {data?.fetchTravelproduct.travelproductAddress && (
+          {mapPosition && data?.fetchTravelproduct.travelproductAddress && (
             <MarketServiceDetailContentLocation
-              travelproductAddress={
-                data.fetchTravelproduct.travelproductAddress
-              }
+              lat={mapPosition.lat}
+              lng={mapPosition.lng}
             />
           )}
         </section>
