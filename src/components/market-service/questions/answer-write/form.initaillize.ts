@@ -10,14 +10,29 @@ export const useInitialize = (
   serviceQuestionId: string,
   toggleAnswer: () => void
 ) => {
-  const [createTravelproductQuestion] = useMutation(
-    CreateTravelproductQuestionAnswerDocument
+  const [createTravelproductQuestionAnswer] = useMutation(
+    CreateTravelproductQuestionAnswerDocument,
+    {
+      update(cache, { data }) {
+        const newAnswer = data?.createTravelproductQuestionAnswer; // 추가된 답변
+
+        if (!newAnswer) return;
+
+        cache.modify({
+          fields: {
+            fetchTravelproductQuestionAnswers(existingAnswers = []) {
+              return [...existingAnswers, newAnswer]; // 기존 캐시에 추가
+            },
+          },
+        });
+      },
+    }
   );
 
   const onSubmit = async (data: IAnswerSchema) => {
     const { contents } = data;
     try {
-      const result = await createTravelproductQuestion({
+      const result = await createTravelproductQuestionAnswer({
         variables: {
           createServiceQuestionAnswerInput: { contents },
           serviceQuestionId: serviceQuestionId,

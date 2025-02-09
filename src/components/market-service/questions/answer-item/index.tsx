@@ -1,4 +1,4 @@
-import { CornerDownRight, Pencil, X } from "lucide-react";
+import { CornerDownRight } from "lucide-react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import { useFormattedDate } from "@/commons/hooks/use-formatted-date";
@@ -13,7 +13,7 @@ export default function AnswerItem({
   return (
     <div className={styles.question_box}>
       <div className={styles.left}>
-        <CornerDownRight />
+        <CornerDownRight className={styles.gray70} />
       </div>
       <div className={styles.question_item}>
         <div className={styles.profile_header}>
@@ -31,11 +31,6 @@ export default function AnswerItem({
               alt="프로필"
             />
             <div className={styles.profile_name}>{user?.name}</div>
-          </div>
-          {/* TODO: 본인이 쓴 문의일 때만 보이도록 */}
-          <div className={styles.action_button_container}>
-            <Pencil width={20} height={20} className={styles.gray70} />
-            <X width={20} height={20} className={styles.gray70} />
           </div>
         </div>
 

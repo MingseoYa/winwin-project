@@ -11,8 +11,24 @@ export const useInitialize = (
   toggleModal: () => void
 ) => {
   const { serviceId } = useParams() as { serviceId: string };
+  // 캐시 직접 수정으로 문의 등록 시 새로고침 없이 자동으로 리스트에 반영되도록 함
   const [createTravelproductQuestion] = useMutation(
-    CreateTravelproductQuestionDocument
+    CreateTravelproductQuestionDocument,
+    {
+      update(cache, { data }) {
+        const newQuestion = data?.createTravelproductQuestion; // 추가된 문의
+
+        if (!newQuestion) return;
+
+        cache.modify({
+          fields: {
+            fetchTravelproductQuestions(existingQuestions = []) {
+              return [newQuestion, ...existingQuestions]; // 기존 캐시에 추가
+            },
+          },
+        });
+      },
+    }
   );
 
   const onSubmit = async (data: IContactSchema) => {
