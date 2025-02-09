@@ -34,21 +34,32 @@ export function MarketServiceDeatilContentImage({
   };
   return (
     <div className={styles.slider_container}>
-      <Slider {...settings}>
-        {images?.map((src, index) => (
-          <div key={src} className={styles.slide}>
-            <div className={styles.image_wrapper}>
-              <Image
-                src={`https://storage.googleapis.com/${src}`}
-                alt={`슬라이더 이미지 ${index + 1}`}
-                fill
-                className={styles.image}
-                priority
-              />
+      {images?.length ? (
+        <Slider {...settings}>
+          {images?.map((src, index) => (
+            <div key={src} className={styles.slide}>
+              <div className={styles.image_wrapper}>
+                <Image
+                  src={`https://storage.googleapis.com/${src}`}
+                  alt={`슬라이더 이미지 ${index + 1}`}
+                  fill
+                  className={styles.image}
+                  priority
+                />
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      ) : (
+        <Image
+          src="/images/default.jpg"
+          width={0}
+          height={0}
+          sizes="100vw"
+          className={styles.image}
+          alt="default 이미지"
+        />
+      )}
     </div>
   );
 }
