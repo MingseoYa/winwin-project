@@ -13,7 +13,7 @@ import {
   FetchTravelproductQuestionAnswersDocument,
   FetchTravelproductQuestionAnswersQuery,
 } from "@/commons/graphql/graphql";
-import { useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import AnswerItem from "../answer-item";
 import AnswerWrite from "../answer-write";
 import { useState } from "react";
@@ -25,21 +25,22 @@ export default function QuestionItem({
   user,
 }: QuestionItemProps) {
   const { formatYYMMDDHHMM } = useFormattedDate(createdAt || "");
-  const { data } = useQuery<FetchTravelproductQuestionAnswersQuery>(
-    FetchTravelproductQuestionAnswersDocument,
-    {
-      variables: { serviceQuestionId: id },
-    }
-  );
+  // ✅ `useLazyQuery`를 사용하여 클릭 시에만 데이터 불러오기
+  const [fetchAnswers, { data, loading }] =
+    useLazyQuery<FetchTravelproductQuestionAnswersQuery>(
+      FetchTravelproductQuestionAnswersDocument
+    );
   const [isAnswer, setIsAnswer] = useState(false);
   const [isArrowDown, setIsArrowDown] = useState(false);
   const toggleAnswer = () => {
     setIsAnswer((prev) => !prev);
   };
   const toggleArrowDown = () => {
+    if (!isArrowDown) {
+      fetchAnswers({ variables: { serviceQuestionId: id } }); // 버튼 클릭 시에만 데이터를 불러옴
+    }
     setIsArrowDown((prev) => !prev);
   };
-  console.log("answer", data);
   return (
     <div className={styles.question_box}>
       <div className={styles.question_item}>
@@ -85,6 +86,7 @@ export default function QuestionItem({
           <ChevronDown className={styles.gray70} onClick={toggleArrowDown} />
         )}
       </div>
+      {/* 답변 작성하기 */}
       {isAnswer && (
         <AnswerWrite
           serviceQuestionId={id}
@@ -93,11 +95,13 @@ export default function QuestionItem({
           toggleArrowDown={toggleArrowDown}
         />
       )}
+      {/* 답변 리스트 불러오기 (클릭 시에 네트워크 요청 됨) */}
       {isArrowDown && (
         <div className={styles.answer_list}>
-          {data?.fetchTravelproductQuestionAnswers &&
-          data.fetchTravelproductQuestionAnswers.length > 0 ? (
-            data.fetchTravelproductQuestionAnswers.map((answer) => (
+          {loading ? (
+            <p>답변 불러오는 중...</p>
+          ) : data?.fetchTravelproductQuestionAnswers.length ? (
+            data?.fetchTravelproductQuestionAnswers.map((answer) => (
               <AnswerItem
                 key={answer._id}
                 contents={answer.contents}
