@@ -21,11 +21,25 @@
   border: none;
 }
 
+.button__primary__m__fit {
+  background-color: var(--main);
+  color: white;
+  border: none;
+}
+
 .button__black__s__fit {
   background-color: black;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.button__cancel__m__fit {
+  background-color: white;
+  border: 0.0625rem solid black;
+  color: black;
   font-size: 1rem;
   font-weight: 500;
 }

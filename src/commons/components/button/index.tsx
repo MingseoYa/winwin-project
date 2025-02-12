@@ -27,6 +27,14 @@ export function ButtonPrimaryMFull({ children, ...rest }: IButton) {
   );
 }
 
+export function ButtonPrimaryMFit({ children, ...rest }: IButton) {
+  return (
+    <ButtonBase cssprop={styles.button__primary__m__fit} {...rest}>
+      {children}
+    </ButtonBase>
+  );
+}
+
 export function ButtonBlackSFit({ children, ...rest }: IButton) {
   return (
     <ButtonBase cssprop={styles.button__black__s__fit} {...rest}>
@@ -35,9 +43,17 @@ export function ButtonBlackSFit({ children, ...rest }: IButton) {
   );
 }
 
+export function ButtonCancelMfit({ children, ...rest }: IButton) {
+  return (
+    <ButtonBase cssprop={styles.button__cancel__m__fit} type="button" {...rest}>
+      {children}
+    </ButtonBase>
+  );
+}
+
 export function ButtonCancelSfit({ children, ...rest }: IButton) {
   return (
-    <ButtonBase cssprop={styles.button__cancel__s__fit} {...rest}>
+    <ButtonBase cssprop={styles.button__cancel__s__fit} type="button" {...rest}>
       {children}
     </ButtonBase>
   );
