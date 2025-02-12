@@ -1,3 +1,5 @@
-export default function MarketProductsPage(): JSX.Element {
-  return <></>;
+import { MarketService } from "@/components/market/service-list";
+
+export default function MarketProductsPage() {
+  return <MarketService />;
 }
