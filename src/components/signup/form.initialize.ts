@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { UseFormReturn } from "react-hook-form";
 import { ISignupSchema } from "./form.schema";
 import { useMutation } from "@apollo/client";
-import { CREATE_USER } from "@/commons/graphql/mutations/create-user";
+import { CreateUserDocument } from "@/commons/graphql/graphql";
 
 export const useInitialize = (method: UseFormReturn<ISignupSchema>) => {
   const router = useRouter();
-  const [createUser] = useMutation(CREATE_USER);
+  const [createUser] = useMutation(CreateUserDocument);
   const onSubmit = async (data: ISignupSchema) => {
     const { name, email, password } = data;
     try {

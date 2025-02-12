@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import { UseFormReturn } from "react-hook-form";
 import { ILoginSchema } from "./form.schema";
 import { ApolloError, useMutation } from "@apollo/client";
-import { LOGIN_USER } from "@/commons/graphql/mutations/login-user";
 import { useAccessTokenStore } from "@/commons/stores/accessToken";
+import { LoginUserDocument } from "@/commons/graphql/graphql";
 
 export const useInitialize = (method: UseFormReturn<ILoginSchema>) => {
   const router = useRouter();
-  const [loginUser] = useMutation(LOGIN_USER);
+  const [loginUser] = useMutation(LoginUserDocument);
   const { setAccessToken } = useAccessTokenStore();
 
   const onSubmit = async (data: ILoginSchema) => {

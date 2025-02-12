@@ -1,0 +1,18 @@
+/* 공통 - 레이블과 인풋 그룹 */
+.input_group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  position: relative;
+}
+
+/* 공통 - 인풋 레이블 */
+.input_label {
+  color: #333;
+  font-weight: 500;
+}
+
+.require {
+  color: #f66a6a;
+}
