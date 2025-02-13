@@ -37,14 +37,9 @@ export default function MarketServiceDetail() {
     }
   }, [data, mapPosition]);
 
-  console.log("mapPosition: ", mapPosition);
   return (
     <main className={styles.container}>
-      <MarketServiceDetailHeader
-        name={data?.fetchTravelproduct.name || ""}
-        remarks={data?.fetchTravelproduct.remarks || ""}
-        tags={data?.fetchTravelproduct.tags || []}
-      />
+      <MarketServiceDetailHeader />
       <div className={styles.content}>
         <section>
           <MarketServiceDeatilContentImage
