@@ -7,7 +7,7 @@ export type MarketServiceDetailCommon =
 // 헤더 컴포넌트 props
 export type MarketServicceDetailHeaderProps = Pick<
   MarketServiceDetailCommon,
-  "name" | "remarks" | "tags"
+  "name" | "remarks" | "tags" | "pickedCount"
 >;
 
 export type MarketServiceDeatilContentImageProps = Pick<
