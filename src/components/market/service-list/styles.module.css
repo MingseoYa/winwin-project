@@ -5,7 +5,7 @@
   padding: 0 2rem;
   margin: 0 auto;
   gap: 1rem;
-  margin-bottom: 4rem;
+  margin-top: 4rem;
 }
 
 .header {
@@ -33,14 +33,7 @@
   color: var(--gray-900);
 }
 
-.card_container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* ✅ 한 줄에 5개씩 */
-  gap: 1rem; /* ✅ 카드 간격 */
-}
-
 .card_wrapper {
-  width: 100%;
-  max-width: 15rem; /* ✅ 카드의 최대 크기 설정 */
+  padding: 1rem 0;
+  padding-left: 1rem;
 }
