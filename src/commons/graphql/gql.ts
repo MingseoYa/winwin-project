@@ -21,6 +21,7 @@ const documents = {
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n    }\n  }\n": types.CreateUserDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": types.LoginUserDocument,
     "\n  mutation logoutUser {\n    logoutUser\n  }\n": types.LogoutUserDocument,
+    "\n  mutation toggleTravelproductPick($serviceId: ID!) {\n    toggleTravelproductPick(travelproductId: $serviceId)\n  }\n": types.ToggleTravelproductPickDocument,
     "\n  mutation updateTravelproduct(\n    $updateTravelproductInput: UpdateTravelproductInput!\n    $travelproductId: ID!\n  ) {\n    updateTravelproduct(\n      updateTravelproductInput: $updateTravelproductInput\n      travelproductId: $travelproductId\n    ) {\n      _id\n      name\n      remarks\n      contents\n      price\n      tags\n      images\n      pickedCount\n      travelproductAddress {\n        address\n      }\n    }\n  }\n": types.UpdateTravelproductDocument,
     "\n  mutation uploadFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": types.UploadFileDocument,
     "\n  query fetchBoardsOfTheBest {\n    fetchBoardsOfTheBest {\n      _id\n      writer\n      title\n      contents\n      images\n      likeCount\n      dislikeCount\n    }\n  }\n": types.FetchBoardsOfTheBestDocument,
@@ -77,6 +78,10 @@ export function graphql(source: "\n  mutation loginUser($email: String!, $passwo
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  mutation logoutUser {\n    logoutUser\n  }\n"): (typeof documents)["\n  mutation logoutUser {\n    logoutUser\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation toggleTravelproductPick($serviceId: ID!) {\n    toggleTravelproductPick(travelproductId: $serviceId)\n  }\n"): (typeof documents)["\n  mutation toggleTravelproductPick($serviceId: ID!) {\n    toggleTravelproductPick(travelproductId: $serviceId)\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
