@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   return (
-    <header>
+    <header className={styles.header}>
       <div className={styles.contents}>
         <div className={styles.left_area}>
           <Link href="/">
