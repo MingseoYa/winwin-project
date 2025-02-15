@@ -1,44 +1,25 @@
 import styles from "./styles.module.css";
-import { LogoutUserDocument } from "@/commons/graphql/graphql";
-import { useAccessTokenStore } from "@/commons/stores/accessToken";
-import { useApolloClient, useMutation } from "@apollo/client";
-import { useRouter } from "next/navigation";
+import { Modal } from "antd";
+import { ButtonCancelSfit } from "@/commons/components/button";
 import { IUserMenuDropdownProps } from "./types";
+import { useUserMenuDropdown } from "./hooks";
 
 export default function UserMenuDropdown({
   data,
   toggleUserMenu,
 }: IUserMenuDropdownProps) {
-  const router = useRouter();
-  const { setAccessToken } = useAccessTokenStore();
-  const client = useApolloClient();
-  const [logoutUser] = useMutation(LogoutUserDocument, {
-    onCompleted: () => {
-      setAccessToken("");
-      client.cache.evict({ fieldName: "fetchUserLoggedIn" });
-      client.cache.gc();
-      router.push("/products");
-    },
-    onError: (error) => {
-      console.error("Logout Error:", error);
-    },
-  });
-  const onClickMyPoints = () => {
-    router.push("/my/points");
-    toggleUserMenu();
-  };
+  const {
+    isModalOpen,
+    openModal,
+    closeModal,
+    selectedAmount,
+    handleAmountClick,
+    onClickPoint,
+    onClickMyInfo,
+    onClickLogout,
+    CHARGE_OPTIONS,
+  } = useUserMenuDropdown(data, toggleUserMenu);
 
-  const onClickMyInfo = () => {
-    router.push("/my/info");
-    toggleUserMenu();
-  };
-  const onClickLogout = async () => {
-    try {
-      await logoutUser();
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <div className={styles.user_menu_dropdown}>
       <div className={styles.user_info}>
@@ -55,14 +36,54 @@ export default function UserMenuDropdown({
           </div>
         </div>
       </div>
+
       <nav className={styles.user_menu_nav}>
         <div className={styles.menu}>
-          <button onClick={onClickMyPoints}>포인트 관리</button>
+          <button onClick={openModal}>포인트 관리</button>
         </div>
+
+        {/* 포인트 충전 모달 */}
+        {isModalOpen && (
+          <Modal
+            open={isModalOpen}
+            onCancel={closeModal}
+            footer={null}
+            closable={false}
+          >
+            <h2 className={styles.modal_title}>포인트 충전</h2>
+            <div className={styles.charge_options}>
+              {CHARGE_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  className={`${styles.charge_option} ${
+                    selectedAmount === option.value ? styles.selected : ""
+                  }`}
+                  onClick={() => handleAmountClick(option.value)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+            <div className={styles.modal_actions}>
+              <button
+                className={styles.charge_button}
+                onClick={onClickPoint}
+                disabled={!selectedAmount}
+              >
+                충전하기
+              </button>
+              <ButtonCancelSfit type="button" onClick={closeModal}>
+                취소
+              </ButtonCancelSfit>
+            </div>
+          </Modal>
+        )}
+
         <div className={styles.menu}>
           <button onClick={onClickMyInfo}>내 정보 관리</button>
         </div>
       </nav>
+
       <button onClick={onClickLogout} className={styles.logout}>
         로그아웃
       </button>

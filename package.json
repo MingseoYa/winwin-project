@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.12.6",
     "@hookform/resolvers": "^3.10.0",
+    "@portone/browser-sdk": "^0.0.12",
     "@types/react-slick": "^0.23.13",
     "antd": "^5.23.2",
     "apollo-upload-client": "^18.0.1",
@@ -31,6 +32,7 @@
     "react-slick": "^0.30.3",
     "react-window": "^1.8.11",
     "slick-carousel": "^1.8.1",
+    "uuid": "^11.0.5",
     "zod": "^3.24.1",
     "zustand": "^5.0.3"
   },
