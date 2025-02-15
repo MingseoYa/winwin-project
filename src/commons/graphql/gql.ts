@@ -15,6 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  fragment UserFragment on User {\n    _id\n    email\n    name\n    picture\n  }\n": types.UserFragmentFragmentDoc,
+    "\n  mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {\n    createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {\n      _id\n    }\n  }\n": types.CreatePointTransactionOfBuyingAndSellingDocument,
     "\n  mutation createPointTransactionOfLoading($paymentId: ID!) {\n    createPointTransactionOfLoading(paymentId: $paymentId) {\n      _id\n      impUid\n      amount\n      balance\n      status\n      statusDetail\n    }\n  }\n": types.CreatePointTransactionOfLoadingDocument,
     "\n  mutation createTravelproduct(\n    $createTravelproductInput: CreateTravelproductInput!\n  ) {\n    createTravelproduct(createTravelproductInput: $createTravelproductInput) {\n      _id\n      seller {\n        _id\n        name\n      }\n    }\n  }\n": types.CreateTravelproductDocument,
     "\n  mutation createTravelproductQuestionAnswer(\n    $createServiceQuestionAnswerInput: CreateTravelproductQuestionAnswerInput!\n    $serviceQuestionId: ID!\n  ) {\n    createTravelproductQuestionAnswer(\n      createTravelproductQuestionAnswerInput: $createServiceQuestionAnswerInput\n      travelproductQuestionId: $serviceQuestionId\n    ) {\n      _id\n      contents\n      user {\n        _id\n      }\n    }\n  }\n": types.CreateTravelproductQuestionAnswerDocument,
@@ -55,6 +56,10 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  fragment UserFragment on User {\n    _id\n    email\n    name\n    picture\n  }\n"): (typeof documents)["\n  fragment UserFragment on User {\n    _id\n    email\n    name\n    picture\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {\n    createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {\n      _id\n    }\n  }\n"): (typeof documents)["\n  mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {\n    createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {\n      _id\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
