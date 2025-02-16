@@ -5,15 +5,52 @@ import Image from "next/image";
 import { useState } from "react";
 import ContactModal from "../contact";
 import { MarketServiceDetailAsideProps } from "../types";
+import { useParams } from "next/navigation";
+import { ApolloError, useMutation, useQuery } from "@apollo/client";
+import {
+  CreatePointTransactionOfBuyingAndSellingDocument,
+  FetchTravelproductDocument,
+  FetchUserLoggedInDocument,
+} from "@/commons/graphql/graphql";
+import { Modal } from "antd";
 
 export function MarketServiceDetailAside({
   price,
   seller,
 }: MarketServiceDetailAsideProps) {
+  const { serviceId } = useParams() as { serviceId: string };
+  const { data: userData, refetch } = useQuery(FetchUserLoggedInDocument);
+  const { data } = useQuery(FetchTravelproductDocument, {
+    variables: { serviceId },
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
+  };
+
+  const [createPoingTransactionOfBuyingAndSelling] = useMutation(
+    CreatePointTransactionOfBuyingAndSellingDocument
+  );
+
+  const onClickBooking = async () => {
+    if (!data) return;
+    try {
+      const result = await createPoingTransactionOfBuyingAndSelling({
+        variables: {
+          useritemId: data.fetchTravelproduct._id,
+        },
+      });
+      console.log(result);
+      await refetch();
+      Modal.success({ content: "예약 완료되었습니다" });
+    } catch (error) {
+      if (error instanceof ApolloError) {
+        // console.error(error?.graphQLErrors[0].message);q
+        Modal.error({
+          content: error?.graphQLErrors[0].message,
+        });
+      }
+    }
   };
 
   return (
@@ -24,7 +61,9 @@ export function MarketServiceDetailAside({
           <li>윈윈에서 포인트 충전 후 구매하실 수 있습니다.</li>
           <li>상세 설명에 사용기한을 꼭 확인해 주세요.</li>
         </ul>
-        <button className={styles.payment_button}>예약하기</button>
+        <button className={styles.payment_button} onClick={onClickBooking}>
+          예약하기
+        </button>
       </div>
       <div className={`${styles.card} ${styles.seller_card}`}>
         <div className={styles.seller_info}>
