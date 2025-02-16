@@ -1,15 +1,18 @@
-import { Heart, MapPin, Share2, Trash2 } from "lucide-react";
+import { Heart, MapPin, Pencil, Share2, Trash2 } from "lucide-react";
 import styles from "./styles.module.css";
 import {
+  DeleteTravelproductDocument,
   FetchTravelproductDocument,
   ToggleTravelproductPickDocument,
 } from "@/commons/graphql/graphql";
-import { useParams } from "next/navigation";
-import { useMutation, useQuery } from "@apollo/client";
+import { useParams, useRouter } from "next/navigation";
+import { ApolloError, useMutation, useQuery } from "@apollo/client";
+import { Modal } from "antd";
 
 export default function MarketServiceDetailHeader() {
+  const router = useRouter();
   const { serviceId } = useParams() as { serviceId: string };
-
+  const [deleteTravelproduct] = useMutation(DeleteTravelproductDocument);
   // 현재 상품 정보 가져오기
   const { data } = useQuery(FetchTravelproductDocument, {
     variables: { serviceId },
@@ -55,14 +58,40 @@ export default function MarketServiceDetailHeader() {
     });
   };
 
+  const onClickDelete = async () => {
+    try {
+      const result = await deleteTravelproduct({
+        variables: { serviceId },
+      });
+      console.log(result);
+      Modal.success({
+        content: "삭제되었습니다.",
+      });
+      router.push("/market");
+    } catch (error) {
+      if (error instanceof ApolloError) {
+        // console.error(error?.graphQLErrors[0].message);q
+        Modal.error({
+          content: error?.graphQLErrors[0].message,
+        });
+      }
+    }
+  };
+
+  const onClickEdit = () => {
+    router.push(`/market/${serviceId}/edit`);
+  };
   return (
     <header className={styles.header}>
       <div className={styles.title_area}>
         <h2 className={styles.title}>{data?.fetchTravelproduct.name}</h2>
         <div className={styles.icon_area}>
-          <Trash2 color="#333333" className={styles.icon} />
-          <Share2 color="#333333" className={styles.icon} />
-          <MapPin color="#333333" className={styles.icon} />
+          <Trash2
+            color="#333333"
+            className={styles.icon}
+            onClick={onClickDelete}
+          />
+          <Pencil className={styles.icon} onClick={onClickEdit} />
           <button className={styles.pickedCount} onClick={onClickPicked}>
             <Heart color="#333333" className={styles.icon} />
 
