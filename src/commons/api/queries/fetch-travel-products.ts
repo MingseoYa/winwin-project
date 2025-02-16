@@ -13,6 +13,10 @@ export const FETCH_PRODUCTS = gql`
         name
         picture
       }
+      seller {
+        name
+        picture
+      }
       images
     }
   }
