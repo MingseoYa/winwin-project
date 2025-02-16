@@ -3,11 +3,11 @@ import { gql } from "@apollo/client";
 export const UPDATE_TRAVEL_PRODUCT = gql`
   mutation updateTravelproduct(
     $updateTravelproductInput: UpdateTravelproductInput!
-    $travelproductId: ID!
+    $serviceId: ID!
   ) {
     updateTravelproduct(
       updateTravelproductInput: $updateTravelproductInput
-      travelproductId: $travelproductId
+      travelproductId: $serviceId
     ) {
       _id
       name
