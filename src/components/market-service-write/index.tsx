@@ -34,6 +34,7 @@ export default function MarketServiceWrite(props) {
     onClickImage,
     onClickDelete,
     onClickSubmit,
+    onClickCancel,
   } = useMarketServiceWirte(props);
 
   return (
@@ -170,8 +171,10 @@ export default function MarketServiceWrite(props) {
             </FieldWrapper>
 
             <div className={styles.btn_group}>
-              <ButtonCancelMfit>취소</ButtonCancelMfit>
-              <button>{props.isEdit ? "수정" : "등록"}하기</button>
+              <ButtonCancelMfit onClick={onClickCancel}>취소</ButtonCancelMfit>
+              <button className={styles.submit_button}>
+                {props.isEdit ? "수정" : "등록"}하기{" "}
+              </button>
             </div>
           </form>
         </FormProvider>

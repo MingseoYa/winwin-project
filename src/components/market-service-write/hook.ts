@@ -4,19 +4,16 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "./schema";
 import { useMutation } from "@apollo/client";
-import {
-  CREATE_TRAVEL_PRODUCT,
-  UPDATE_TRAVEL_PRODUCT,
-  UPLOAD_FILE,
-} from "./queries";
+import { CREATE_TRAVEL_PRODUCT, UPLOAD_FILE } from "./queries";
 import { checkValidationFile } from "@/commons/utils/check-file";
+import { UpdateTravelproductDocument } from "@/commons/graphql/graphql";
 
 const useMarketServiceWirte = (props) => {
   const params = useParams();
   const router = useRouter();
   const fileRef = useRef<HTMLInputElement>(null);
   const [createTravelproduct] = useMutation(CREATE_TRAVEL_PRODUCT);
-  const [updateTravelproduct] = useMutation(UPDATE_TRAVEL_PRODUCT);
+  const [updateTravelproduct] = useMutation(UpdateTravelproductDocument);
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const [isZipCodeModalOpen, setIsZipCodeModalOpen] = useState(false);
   const [inputTag, setInputTag] = useState("");
@@ -42,11 +39,12 @@ const useMarketServiceWirte = (props) => {
       name: defaultData.name || "",
       remarks: defaultData.remarks || "",
       contents: defaultData.contents || "",
-      price: defaultData.price || null,
+      price: defaultData.price || 0,
       images: defaultData.images || [],
+      tags: defaultData.tags || [],
     });
     // 태그 초기값 넣어주기
-    // setTags(defaultData.tags || []);
+    methods.trigger();
   }, [props.data, methods]);
 
   // 웹 에디터 입력 값 setValue해주기
@@ -104,7 +102,6 @@ const useMarketServiceWirte = (props) => {
   // 이미지업로드버튼 클릭 시
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    console.log(file);
 
     // 검증 실패시 OnChangeFile함수 즉시 종료
     const isValid = checkValidationFile(file);
@@ -123,7 +120,6 @@ const useMarketServiceWirte = (props) => {
   // delete버튼 클릭 시 이미지 미리보기 삭제
   const onClickDelete = (event: MouseEvent<HTMLImageElement>) => {
     const imageId = event.currentTarget.id;
-    console.log("삭제할 이미지 아이디: ", imageId);
     // 이미지 삭제
     const deletedImage = images.filter((_, index) => index !== Number(imageId));
     methods.setValue("images", deletedImage);
@@ -165,15 +161,19 @@ const useMarketServiceWirte = (props) => {
               tags: data.tags,
               images: data.images,
             },
-            travelproductId: params.productId as string,
+            serviceId: params.serviceId as string,
           },
         });
         console.log(result);
-        router.push(`/products/${params.productId as string}`);
+        router.push(`/market/${params.serviceId as string}`);
       } catch (error) {
         console.error(error);
       }
     }
+  };
+
+  const onClickCancel = () => {
+    router.push("/market");
   };
 
   return {
@@ -191,6 +191,7 @@ const useMarketServiceWirte = (props) => {
     onClickImage,
     onClickDelete,
     onClickSubmit,
+    onClickCancel,
   };
 };
 
