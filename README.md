@@ -1,12 +1,13 @@
-# ✈️ 트립트립
+# 🪽 윈윈
 프리랜서와 클라이언트를 이어주는 마켓 웹 애플리케이션
 
 ## 개발환경
-- 개발 기간: 2024.11 ~ 2024.12 (약 3주)
-- Frontend: Next.js 14 (App Router, TypeScript)
-- Mobile: React Native (WebView 통신)
+- 개발 기간: 2025.01 ~ 2025.02
+- 프레임워크: Next.js 14
+- 개발 언어: Typescript
 - API: GraphQL (Apollo client)
-- State Management: Apollo Client (Cache), zustand (accessToken, refresthToken)
+- 상태 관리: Apollo Client (Cache), zustand (accessToken, refresthToken)
+- 패키지 매니저: Yarn
 
 ## 주요기능
 - accessToken 과 refreshToken을 사용한 로그인 및 회원가입
