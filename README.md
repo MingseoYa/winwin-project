@@ -1,4 +1,22 @@
-## 스크린샷
+# ✈️ 트립트립
+프리랜서와 클라이언트를 이어주는 마켓 웹 애플리케이션
+
+## 개발환경
+- 개발 기간: 2024.11 ~ 2024.12 (약 3주)
+- Frontend: Next.js 14 (App Router, TypeScript)
+- Mobile: React Native (WebView 통신)
+- API: GraphQL (Apollo client)
+- State Management: Apollo Client (Cache), zustand (accessToken, refresthToken)
+
+## 주요기능
+- accessToken 과 refreshToken을 사용한 로그인 및 회원가입
+- 메인 페이지 배너 캐러셀 구현, 인기 서비스 및 인기 게시글 각 4개씩 노출
+- React Hook Form과 Zod를 사용한 마켓 CRUD
+- PortOne 연동하여 카카오페이 포인트 충전 기능
+- 충전된 포인트 기반 예약하기 기능
+- 문의하기 및 답변하기 기능 (댓글 & 대댓글)
+
+## 📸스크린샷
 <img width="400" alt="스크린샷 2025-02-16 오후 10 44 41" src="https://github.com/user-attachments/assets/599d515f-777e-415f-9178-99274ea0feb5" />
 <img width="400" alt="스크린샷 2025-02-16 오후 10 44 22" src="https://github.com/user-attachments/assets/f9d68fa1-bfd2-45b6-bb16-e027cc99df17" />
 <img width="400" alt="스크린샷 2025-02-16 오후 10 48 07" src="https://github.com/user-attachments/assets/3f75ebe3-0ed7-4f4e-8d27-576205f543f0" />
