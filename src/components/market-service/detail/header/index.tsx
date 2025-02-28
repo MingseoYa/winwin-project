@@ -1,3 +1,5 @@
+"use client";
+
 import { Heart, Pencil, Trash2 } from "lucide-react";
 import styles from "./styles.module.css";
 import { useMarketServiceDetailHeader } from "./hook";

@@ -1,3 +1,4 @@
+"use client";
 import styles from "./styles.module.css";
 import dynamic from "next/dynamic";
 import Image from "next/image";

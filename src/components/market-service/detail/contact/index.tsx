@@ -1,12 +1,23 @@
-import { Modal } from "antd";
 import styles from "./styles.module.css";
 import Image from "next/image";
-import { MarketServiceDetailContactModalProps } from "../types";
 import Form from "@/commons/components/form";
+import { FetchTravelproductQuery } from "@/commons/graphql/graphql";
 import { contactSchema, IContactSchema } from "./form.schema";
 import { useInitialize } from "./form.initialize";
 import { TextareaStandardMFull } from "@/commons/components/textarea";
 import { ButtonPrimaryMFull } from "@/commons/components/button";
+import { Modal } from "antd";
+
+export type MarketServiceDetailCommon =
+  FetchTravelproductQuery["fetchTravelproduct"];
+
+export type MarketServiceDetailContactModalProps = Pick<
+  MarketServiceDetailCommon,
+  "seller"
+> & {
+  isModalOpen: boolean;
+  toggleModal: () => void;
+};
 
 export default function MarketServiceDetailContactModal({
   seller,
@@ -40,7 +51,7 @@ export default function MarketServiceDetailContactModal({
             </div>
             <TextareaStandardMFull
               name="contents"
-              placeholder="정확하게 빠른 답변을 위해 요구사항을 상세하게 알려주세요."
+              placeholder="정확하고 빠른 답변을 위해 요구사항을 상세하게 알려주세요."
             />
             <div className={styles.contact_button_container}>
               <ButtonPrimaryMFull>문의하기</ButtonPrimaryMFull>
