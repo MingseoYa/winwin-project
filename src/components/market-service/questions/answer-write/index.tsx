@@ -7,10 +7,12 @@ import { ButtonCancelSfit, ButtonBlackSFit } from "@/commons/components/button";
 
 interface IAnswerWrite {
   serviceQuestionId: string;
-  toggleAnswer: () => void;
-  isEdit?: boolean;
+  isEdit: boolean;
   contents?: string;
+  toggleAnswer: () => void;
+  toggleArrowDown: () => void;
 }
+
 export default function AnswerWrite(props: IAnswerWrite) {
   return (
     <div className={styles.container}>
