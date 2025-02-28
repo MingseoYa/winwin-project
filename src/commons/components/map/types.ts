@@ -1,4 +1,7 @@
-import { MarketServiceDetailCommon } from "@/components/market-service/detail/types";
+import { FetchTravelproductQuery } from "@/commons/graphql/graphql";
+
+export type MarketServiceDetailCommon =
+  FetchTravelproductQuery["fetchTravelproduct"];
 
 export type KakaoMapProps = Pick<
   NonNullable<MarketServiceDetailCommon["travelproductAddress"]>,
