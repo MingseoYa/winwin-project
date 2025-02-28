@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { SELLER_FRAGMENT } from "../fragment/seller";
 
 export const FETCH_TRAVELPRODUCTS_OF_THE_BEST = gql`
   query fetchTravelproductsOfTheBest {
@@ -11,9 +12,9 @@ export const FETCH_TRAVELPRODUCTS_OF_THE_BEST = gql`
       images
       pickedCount
       seller {
-        name
-        picture
+        ...SellerFragment
       }
     }
   }
+  ${SELLER_FRAGMENT}
 `;

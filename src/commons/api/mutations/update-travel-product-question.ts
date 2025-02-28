@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { USER_FRAGMENT } from "../fragment/user";
 
 export const UPDATE_TRAVEL_PRODUCT_QUESTION = gql`
   mutation updateTravelproductQuestion(
@@ -15,10 +16,11 @@ export const UPDATE_TRAVEL_PRODUCT_QUESTION = gql`
         _id
       }
       user {
-        name
+        ...UserFragment
       }
       createdAt
       updatedAt
     }
   }
+  ${USER_FRAGMENT}
 `;
