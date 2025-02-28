@@ -6,6 +6,9 @@ const config: CodegenConfig = {
   generates: {
     "src/commons/graphql/": {
       preset: "client",
+      presetConfig: {
+        fragmentMasking: false, // 프래그먼트 마스킹 비활성화 (flat 타입 적용)
+      },
     },
   },
 };

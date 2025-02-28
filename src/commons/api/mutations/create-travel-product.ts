@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { SELLER_FRAGMENT } from "../fragment/seller";
 
 export const CREATE_TRAVEL_PRODUCT = gql`
   mutation createTravelproduct(
@@ -7,9 +8,9 @@ export const CREATE_TRAVEL_PRODUCT = gql`
     createTravelproduct(createTravelproductInput: $createTravelproductInput) {
       _id
       seller {
-        _id
-        name
+        ...SellerFragment
       }
     }
   }
+  ${SELLER_FRAGMENT}
 `;

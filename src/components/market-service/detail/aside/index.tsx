@@ -1,33 +1,28 @@
 "use client";
-import { ExternalLink, MessageCircle } from "lucide-react";
+
 import styles from "./styles.module.css";
 import Image from "next/image";
-import { useState } from "react";
 import ContactModal from "../contact";
-import { MarketServiceDetailAsideProps } from "../types";
-import { useParams } from "next/navigation";
+import useFetchTravelproduct from "../../hook";
+import { useState } from "react";
+import { ExternalLink, MessageCircle } from "lucide-react";
+import { Modal } from "antd";
 import { ApolloError, useMutation, useQuery } from "@apollo/client";
 import {
   CreatePointTransactionOfBuyingAndSellingDocument,
-  FetchTravelproductDocument,
   FetchUserLoggedInDocument,
 } from "@/commons/graphql/graphql";
-import { Modal } from "antd";
 
-export function MarketServiceDetailAside({
-  price,
-  seller,
-}: MarketServiceDetailAsideProps) {
-  const { serviceId } = useParams() as { serviceId: string };
-  const { data: userData, refetch } = useQuery(FetchUserLoggedInDocument);
-  const { data } = useQuery(FetchTravelproductDocument, {
-    variables: { serviceId },
-  });
+export function MarketServiceDetailAside() {
+  const { data } = useFetchTravelproduct();
+  const { refetch } = useQuery(FetchUserLoggedInDocument);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
 
+  // 예약하기 뮤테이션
   const [createPoingTransactionOfBuyingAndSelling] = useMutation(
     CreatePointTransactionOfBuyingAndSellingDocument
   );
@@ -41,11 +36,11 @@ export function MarketServiceDetailAside({
         },
       });
       console.log(result);
+      // 사용자 포인트 차감 반영 위해 refetch
       await refetch();
       Modal.success({ content: "예약 완료되었습니다" });
     } catch (error) {
       if (error instanceof ApolloError) {
-        // console.error(error?.graphQLErrors[0].message);q
         Modal.error({
           content: error?.graphQLErrors[0].message,
         });
@@ -55,8 +50,11 @@ export function MarketServiceDetailAside({
 
   return (
     <div className={styles.sidebar}>
+      {/* 예약하기 카드 */}
       <div className={styles.card}>
-        <div className={styles.price}>{price}원</div>
+        <div className={styles.price}>
+          {data?.fetchTravelproduct.price?.toLocaleString()}원
+        </div>
         <ul className={styles.warnings}>
           <li>윈윈에서 포인트 충전 후 구매하실 수 있습니다.</li>
           <li>상세 설명에 사용기한을 꼭 확인해 주세요.</li>
@@ -65,12 +63,14 @@ export function MarketServiceDetailAside({
           예약하기
         </button>
       </div>
+
+      {/* 판매자 정보 및 문의하기 카드 */}
       <div className={`${styles.card} ${styles.seller_card}`}>
         <div className={styles.seller_info}>
           <Image
             src={
-              seller?.picture
-                ? `https://storage.googleapis.com/${seller.picture}`
+              data?.fetchTravelproduct.seller?.picture
+                ? `https://storage.googleapis.com/${data.fetchTravelproduct.seller.picture}`
                 : "/images/default-profile.png" // 기본 프로필 이미지
             }
             alt="판매자 프로필"
@@ -79,8 +79,12 @@ export function MarketServiceDetailAside({
             className={styles.seller_image}
           />
           <div>
-            <h3 className={styles.seller_name}>{seller?.name}</h3>
-            <p className={styles.seller_title}>{seller?.email}</p>
+            <h3 className={styles.seller_name}>
+              {data?.fetchTravelproduct.seller?.name}
+            </h3>
+            <p className={styles.seller_title}>
+              {data?.fetchTravelproduct.seller?.email}
+            </p>
           </div>
         </div>
         <a href="#" className={styles.portfolio_link}>
@@ -91,9 +95,10 @@ export function MarketServiceDetailAside({
           <MessageCircle className={styles.icon} />
           문의하기
         </button>
+        {/* 문의하기 모달 */}
         {isModalOpen && (
           <ContactModal
-            seller={seller}
+            seller={data?.fetchTravelproduct.seller}
             isModalOpen={isModalOpen}
             toggleModal={toggleModal}
           />

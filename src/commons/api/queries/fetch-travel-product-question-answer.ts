@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { USER_FRAGMENT } from "../fragment/user";
 
 export const FETCH_TRAVELPRODUCT_QUESTION_ANSWERS = gql`
   query fetchTravelproductQuestionAnswers($page: Int, $serviceQuestionId: ID!) {
@@ -9,11 +10,10 @@ export const FETCH_TRAVELPRODUCT_QUESTION_ANSWERS = gql`
       _id
       contents
       user {
-        _id
-        name
-        picture
+        ...UserFragment
       }
       createdAt
     }
   }
+  ${USER_FRAGMENT}
 `;

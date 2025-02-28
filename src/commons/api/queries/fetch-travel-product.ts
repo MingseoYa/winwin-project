@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { SELLER_FRAGMENT } from "../fragment/seller";
 
 export const FETCH_TRAVELPRODUCT = gql`
   query fetchTravelproduct($serviceId: ID!) {
@@ -18,11 +19,9 @@ export const FETCH_TRAVELPRODUCT = gql`
         lng
       }
       seller {
-        _id
-        name
-        picture
-        email
+        ...SellerFragment
       }
     }
   }
+  ${SELLER_FRAGMENT}
 `;

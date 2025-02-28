@@ -1,40 +1,40 @@
 "use client";
-
 import styles from "./styles.module.css";
-
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { CustomArrowProps } from "react-slick";
-import { MarketServiceDeatilContentImageProps } from "../../types";
+import useFetchTravelproduct from "@/components/market-service/hook";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
-
 const NextArrow = ({ onClick }: CustomArrowProps) => {
   return (
     <button onClick={onClick} type="button" className={styles.next}></button>
   );
 };
-
 const PrevArrow = ({ onClick }: CustomArrowProps) => {
   return (
     <button onClick={onClick} type="button" className={styles.prev}></button>
   );
 };
-export function MarketServiceDeatilContentImage({
-  images,
-}: MarketServiceDeatilContentImageProps) {
+
+export function MarketServiceDeatilContentImage() {
+  const { data } = useFetchTravelproduct();
+  const images = data?.fetchTravelproduct.images || [];
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <NextArrow />, // 화살표 버튼을 커스텀해서 사용
+    nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+
   return (
     <div className={styles.slider_container}>
-      {images?.length ? (
+      {images.length > 1 ? (
+        // 이미지가 2개 이상이면 슬라이더로 렌더링
         <Slider {...settings}>
           {images?.map((src, index) => (
             <div key={src} className={styles.slide}>
@@ -50,15 +50,28 @@ export function MarketServiceDeatilContentImage({
             </div>
           ))}
         </Slider>
+      ) : images.length === 1 ? (
+        // 이미지가 1개만 있을 경우
+        <div className={styles.image_wrapper}>
+          <Image
+            src={`https://storage.googleapis.com/${images[0]}`}
+            alt="상품 이미지"
+            fill
+            className={styles.image}
+            priority
+          />
+        </div>
       ) : (
-        <Image
-          src="/images/default.jpg"
-          width={0}
-          height={0}
-          sizes="100vw"
-          className={styles.image}
-          alt="default 이미지"
-        />
+        // 이미지 없으면 기본 이미지
+        <div className={styles.image_wrapper}>
+          <Image
+            src="/images/default.jpg"
+            alt="기본 이미지"
+            fill
+            className={styles.image}
+            priority
+          />
+        </div>
       )}
     </div>
   );
