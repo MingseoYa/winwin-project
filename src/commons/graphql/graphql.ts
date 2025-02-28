@@ -561,9 +561,9 @@ export type UserPoint = {
   user: User;
 };
 
-export type SellerFragmentFragment = { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } & { ' $fragmentName'?: 'SellerFragmentFragment' };
+export type SellerFragmentFragment = { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null };
 
-export type UserFragmentFragment = { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } & { ' $fragmentName'?: 'UserFragmentFragment' };
+export type UserFragmentFragment = { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null };
 
 export type CreatePointTransactionOfBuyingAndSellingMutationVariables = Exact<{
   useritemId: Scalars['ID']['input'];
@@ -584,10 +584,7 @@ export type CreateTravelproductMutationVariables = Exact<{
 }>;
 
 
-export type CreateTravelproductMutation = { __typename?: 'Mutation', createTravelproduct: { __typename?: 'Travelproduct', _id: string, seller?: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'SellerFragmentFragment': SellerFragmentFragment } }
-    ) | null } };
+export type CreateTravelproductMutation = { __typename?: 'Mutation', createTravelproduct: { __typename?: 'Travelproduct', _id: string, seller?: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } | null } };
 
 export type CreateTravelproductQuestionAnswerMutationVariables = Exact<{
   createServiceQuestionAnswerInput: CreateTravelproductQuestionAnswerInput;
@@ -595,10 +592,7 @@ export type CreateTravelproductQuestionAnswerMutationVariables = Exact<{
 }>;
 
 
-export type CreateTravelproductQuestionAnswerMutation = { __typename?: 'Mutation', createTravelproductQuestionAnswer: { __typename?: 'TravelproductQuestionAnswer', _id: string, contents: string, user: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'UserFragmentFragment': UserFragmentFragment } }
-    ) } };
+export type CreateTravelproductQuestionAnswerMutation = { __typename?: 'Mutation', createTravelproductQuestionAnswer: { __typename?: 'TravelproductQuestionAnswer', _id: string, contents: string, user: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } } };
 
 export type CreateTravelproductQuestionMutationVariables = Exact<{
   createTravelproductQuestionInput: CreateTravelproductQuestionInput;
@@ -606,10 +600,7 @@ export type CreateTravelproductQuestionMutationVariables = Exact<{
 }>;
 
 
-export type CreateTravelproductQuestionMutation = { __typename?: 'Mutation', createTravelproductQuestion: { __typename?: 'TravelproductQuestion', _id: string, contents: string, user: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'UserFragmentFragment': UserFragmentFragment } }
-    ) } };
+export type CreateTravelproductQuestionMutation = { __typename?: 'Mutation', createTravelproductQuestion: { __typename?: 'TravelproductQuestion', _id: string, contents: string, user: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } } };
 
 export type CreateUserMutationVariables = Exact<{
   createUserInput: CreateUserInput;
@@ -651,10 +642,7 @@ export type UpdateTravelproductQuestionMutationVariables = Exact<{
 }>;
 
 
-export type UpdateTravelproductQuestionMutation = { __typename?: 'Mutation', updateTravelproductQuestion: { __typename?: 'TravelproductQuestion', _id: string, contents: string, createdAt: any, updatedAt: any, travelproduct: { __typename?: 'Travelproduct', _id: string }, user: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'UserFragmentFragment': UserFragmentFragment } }
-    ) } };
+export type UpdateTravelproductQuestionMutation = { __typename?: 'Mutation', updateTravelproductQuestion: { __typename?: 'TravelproductQuestion', _id: string, contents: string, createdAt: any, updatedAt: any, travelproduct: { __typename?: 'Travelproduct', _id: string }, user: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } } };
 
 export type UpdateTravelproductMutationVariables = Exact<{
   updateTravelproductInput: UpdateTravelproductInput;
@@ -679,10 +667,7 @@ export type FetchBoardsOfTheBestQuery = { __typename?: 'Query', fetchBoardsOfThe
 export type FetchTravelproductsOfTheBestQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FetchTravelproductsOfTheBestQuery = { __typename?: 'Query', fetchTravelproductsOfTheBest: Array<{ __typename?: 'Travelproduct', _id: string, name: string, remarks: string, price?: number | null, tags?: Array<string> | null, images?: Array<string> | null, pickedCount?: number | null, seller?: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'SellerFragmentFragment': SellerFragmentFragment } }
-    ) | null }> };
+export type FetchTravelproductsOfTheBestQuery = { __typename?: 'Query', fetchTravelproductsOfTheBest: Array<{ __typename?: 'Travelproduct', _id: string, name: string, remarks: string, price?: number | null, tags?: Array<string> | null, images?: Array<string> | null, pickedCount?: number | null, seller?: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } | null }> };
 
 export type FetchTravelproductQuestionAnswersQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -690,10 +675,7 @@ export type FetchTravelproductQuestionAnswersQueryVariables = Exact<{
 }>;
 
 
-export type FetchTravelproductQuestionAnswersQuery = { __typename?: 'Query', fetchTravelproductQuestionAnswers: Array<{ __typename?: 'TravelproductQuestionAnswer', _id: string, contents: string, createdAt: any, user: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'UserFragmentFragment': UserFragmentFragment } }
-    ) }> };
+export type FetchTravelproductQuestionAnswersQuery = { __typename?: 'Query', fetchTravelproductQuestionAnswers: Array<{ __typename?: 'TravelproductQuestionAnswer', _id: string, contents: string, createdAt: any, user: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } }> };
 
 export type FetchTravelproductQuestionsQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -701,38 +683,26 @@ export type FetchTravelproductQuestionsQueryVariables = Exact<{
 }>;
 
 
-export type FetchTravelproductQuestionsQuery = { __typename?: 'Query', fetchTravelproductQuestions: Array<{ __typename?: 'TravelproductQuestion', _id: string, contents: string, createdAt: any, user: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'UserFragmentFragment': UserFragmentFragment } }
-    ) }> };
+export type FetchTravelproductQuestionsQuery = { __typename?: 'Query', fetchTravelproductQuestions: Array<{ __typename?: 'TravelproductQuestion', _id: string, contents: string, createdAt: any, user: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } }> };
 
 export type FetchTravelproductQueryVariables = Exact<{
   serviceId: Scalars['ID']['input'];
 }>;
 
 
-export type FetchTravelproductQuery = { __typename?: 'Query', fetchTravelproduct: { __typename?: 'Travelproduct', _id: string, name: string, remarks: string, contents: string, price?: number | null, tags?: Array<string> | null, images?: Array<string> | null, pickedCount?: number | null, travelproductAddress?: { __typename?: 'TravelproductAddress', address?: string | null, addressDetail?: string | null, lat?: number | null, lng?: number | null } | null, seller?: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'SellerFragmentFragment': SellerFragmentFragment } }
-    ) | null } };
+export type FetchTravelproductQuery = { __typename?: 'Query', fetchTravelproduct: { __typename?: 'Travelproduct', _id: string, name: string, remarks: string, contents: string, price?: number | null, tags?: Array<string> | null, images?: Array<string> | null, pickedCount?: number | null, travelproductAddress?: { __typename?: 'TravelproductAddress', address?: string | null, addressDetail?: string | null, lat?: number | null, lng?: number | null } | null, seller?: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } | null } };
 
 export type FetchTravelproductsQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
 
-export type FetchTravelproductsQuery = { __typename?: 'Query', fetchTravelproducts: Array<{ __typename?: 'Travelproduct', _id: string, name: string, remarks: string, contents: string, price?: number | null, tags?: Array<string> | null, images?: Array<string> | null, buyer?: { __typename?: 'User', name: string, picture?: string | null } | null, seller?: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'SellerFragmentFragment': SellerFragmentFragment } }
-    ) | null }> };
+export type FetchTravelproductsQuery = { __typename?: 'Query', fetchTravelproducts: Array<{ __typename?: 'Travelproduct', _id: string, name: string, remarks: string, contents: string, price?: number | null, tags?: Array<string> | null, images?: Array<string> | null, buyer?: { __typename?: 'User', name: string, picture?: string | null } | null, seller?: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } | null }> };
 
 export type FetchTravelproductsIPickedQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FetchTravelproductsIPickedQuery = { __typename?: 'Query', fetchTravelproductsIPicked: Array<{ __typename?: 'Travelproduct', _id: string, name: string, remarks: string, contents: string, price?: number | null, tags?: Array<string> | null, images?: Array<string> | null, pickedCount?: number | null, soldAt?: any | null, seller?: (
-      { __typename?: 'User' }
-      & { ' $fragmentRefs'?: { 'SellerFragmentFragment': SellerFragmentFragment } }
-    ) | null }> };
+export type FetchTravelproductsIPickedQuery = { __typename?: 'Query', fetchTravelproductsIPicked: Array<{ __typename?: 'Travelproduct', _id: string, name: string, remarks: string, contents: string, price?: number | null, tags?: Array<string> | null, images?: Array<string> | null, pickedCount?: number | null, soldAt?: any | null, seller?: { __typename?: 'User', _id: string, name: string, email: string, picture?: string | null } | null }> };
 
 export type FetchUserLoggedInQueryVariables = Exact<{ [key: string]: never; }>;
 
