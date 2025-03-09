@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAccessTokenStore } from "@/commons/stores/accessToken";
-import { useApolloClient, useMutation } from "@apollo/client";
+import { useApolloClient, useMutation, useQuery } from "@apollo/client";
 import { v4 as uuidv4 } from "uuid";
 import * as PortOne from "@portone/browser-sdk/v2";
 import {
@@ -18,10 +18,11 @@ const CHARGE_OPTIONS = [
   { value: 100000, label: "100,000원" },
 ];
 
-export const useUserMenuDropdown = (data: any, toggleUserMenu: () => void) => {
+export const useUserMenuDropdown = (toggleUserMenu: () => void) => {
+  const { data } = useQuery(FetchUserLoggedInDocument);
   const router = useRouter();
-  const { setAccessToken } = useAccessTokenStore();
   const client = useApolloClient();
+  const { setAccessToken } = useAccessTokenStore();
   // 포인트 모달 열기/닫기
   const [isModalOpen, setIsModalOpen] = useState(false);
   // 충전할 포인트 금액 선택
@@ -47,7 +48,8 @@ export const useUserMenuDropdown = (data: any, toggleUserMenu: () => void) => {
   const closeModal = () => setIsModalOpen(false);
   const handleAmountClick = (amount: number) => setSelectedAmount(amount);
 
-  const pointMutation = async (paymentId: string) => {
+  const pointMutation = async (paymentId?: string) => {
+    if (!paymentId) return;
     try {
       await createPointTransactionOfLoading({
         variables: { paymentId },
@@ -105,14 +107,15 @@ export const useUserMenuDropdown = (data: any, toggleUserMenu: () => void) => {
   };
 
   return {
+    data,
+    CHARGE_OPTIONS,
     isModalOpen,
+    selectedAmount,
     openModal,
     closeModal,
-    selectedAmount,
     handleAmountClick,
     onClickPoint,
     onClickMyInfo,
     onClickLogout,
-    CHARGE_OPTIONS,
   };
 };

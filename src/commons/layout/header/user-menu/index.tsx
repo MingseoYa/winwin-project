@@ -5,32 +5,32 @@ import { IUserMenuDropdownProps } from "./types";
 import { useUserMenuDropdown } from "./hooks";
 
 export default function UserMenuDropdown({
-  data,
   toggleUserMenu,
 }: IUserMenuDropdownProps) {
   const {
+    data,
+    CHARGE_OPTIONS,
     isModalOpen,
+    selectedAmount,
     openModal,
     closeModal,
-    selectedAmount,
     handleAmountClick,
     onClickPoint,
     onClickMyInfo,
     onClickLogout,
-    CHARGE_OPTIONS,
-  } = useUserMenuDropdown(data, toggleUserMenu);
+  } = useUserMenuDropdown(toggleUserMenu);
 
   return (
     <div className={styles.user_menu_dropdown}>
       <div className={styles.user_info}>
         <h4 className={styles.user_name}>
-          {data.fetchUserLoggedIn.name} 고객님
+          {data?.fetchUserLoggedIn.name} 고객님
         </h4>
         <div className={styles.user_point}>
           <p className={styles.point_label}>포인트</p>
           <div className={styles.point}>
             <span className={styles.amount}>
-              {data.fetchUserLoggedIn.userPoint?.amount}
+              {data?.fetchUserLoggedIn.userPoint?.amount}
             </span>
             <span className={styles.point_unit}>P</span>
           </div>
