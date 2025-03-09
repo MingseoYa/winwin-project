@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
@@ -11,14 +10,13 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Header() {
   const router = useRouter();
+  const { data } = useQuery(FetchUserLoggedInDocument);
   // 유저메뉴 드롭다운
   const [isOpenUserMenu, SetIsOpenUserMenu] = useState(false);
 
   const toggleUserMenu = () => {
     SetIsOpenUserMenu((prev) => !prev);
   };
-
-  const { data } = useQuery(FetchUserLoggedInDocument);
 
   const onClickLogin = () => {
     router.push("/login");
@@ -93,7 +91,7 @@ export default function Header() {
             </div>
             {/* 유저메뉴 드롭다운 */}
             {isOpenUserMenu && (
-              <UserMenuDropdown data={data} toggleUserMenu={toggleUserMenu} />
+              <UserMenuDropdown toggleUserMenu={toggleUserMenu} />
             )}
           </div>
         ) : (
